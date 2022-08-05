@@ -8,8 +8,7 @@ from adversarialsearchproblem import (
     State as GameState,
 )
 
-from adversarialsearchproblem import GameState as game
-
+import numpy as np
 
 def minimax(asp: AdversarialSearchProblem[GameState, Action]) -> Action:
     """
@@ -21,16 +20,41 @@ def minimax(asp: AdversarialSearchProblem[GameState, Action]) -> Action:
     Output:
         an action (an element of asp.get_available_actions(asp.get_start_state()))
     """
+    player = asp.get_start_state().player_to_move()
+    if player == 0:
+        return MaxValue(asp, asp.get_start_state())
+    elif player == 1:
+        return MinValue(asp, asp.get_start_state())
+    
 
-    def MiniMaxSearch(GameState):
-        player = game.player_to_move(GameState)
-        value, move = MaxValue(GameState)
-        return move
+def MaxValue(asp: AdversarialSearchProblem, state):
+    output = [None, np.NINF]
+    if asp.is_terminal_state(state):
+        output[1] = asp.evaluate_terminal(state)[0]
+        return output
+    else:
+        for action in asp.get_available_actions(state):
+            successor = asp.transition(state, action)
+            curr_eval = MinValue(asp, successor)[1]
+            if curr_eval > output[1]:
+                output = [action, curr_eval]
+        return output
 
-    def MaxValue(GameState)
-        if asp.is_terminal_state(GameState):
-            return asp.evaluate_terminal(GameState)[0]
+def MinValue(asp: AdversarialSearchProblem, state):
+    output = [None, np.inf]
+    if asp.is_terminal_state(state):
+        output[1] = asp.evaluate_terminal(state)[0]
+        return output
+    else:
+        for action in asp.get_available_actions(state):
+            successor = asp.transition(state, action)
+            curr_eval = MaxValue(asp, successor)[1]
+            if curr_eval > output[1]:
+                output = [action, curr_eval]
+        return output
 
+
+        
     """
 
     import numpy as np
