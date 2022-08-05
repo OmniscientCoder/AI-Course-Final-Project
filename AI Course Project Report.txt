@@ -1,0 +1,25 @@
+Introduction:
+The goal of this assignmnt is to figure out a way to implement a minimax or alpha-beta pruning 
+algorithm which will never lose a game of Connect4 or tic-tac-toe. 
+
+Methods:
+I attempted to use minimax as it is the basis of alpha-beta, and understanding 
+minimax can help make ab pruning. Testing my system was challenging, as my system never even ran.
+This will be elaborated on in the following sections.
+Overall, I used pseudocode from the given sources and the internet to create my minimax algorithm
+
+Results:
+This project was painfully difficult. Indeed, I was unable to even get a working minimax function 
+after implementing around ten disctinct versions of minimax, some of whch can be found
+commented out in adversarialsearch.py under the non-commented part (which worked better
+than the rest, but didn't run becaue of an error in gamerunner.py -- which I still do not understand).
+
+Discussion:
+Firstly, there are no ethical concerns with this system, as it doesn't work :)
+Secondly, I believe my methods and choices were correct, but I was simply not experienced enough
+with Python to implement them correctly. I think I need to gain more experience to 
+be able to implement algorithms more efficiently (and make sure that they actually work)
+If I had more time, I would take more time and look at exaple minimax alogirthms so I woud have a 
+better grasp of how it should be implemented...
+
+I'll likely continuing working on this and try to get it to work when I have time... fingers crossed...
